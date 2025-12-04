@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Reels App</title>
+
+<style>
+    body {
+        margin: 0;
+        background: #000;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+    }
+
+    .reel-container {
+        width: 100vw;
+        height: 100vh;
+        scroll-snap-type: y mandatory;
+        overflow-y: scroll;
+    }
+
+    .reel {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        scroll-snap-align: start;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .actions {
+        position: absolute;
+        right: 20px;
+        bottom: 100px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        font-size: 30px;
+        color: white;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .like-count {
+        font-size: 14px;
+    }
+</style>
+
+</head>
+<body>
+
+<div class="reel-container">
+
+    <!-- REEL 1 -->
+    <div class="reel">
+        <video src="https://filesamples.com/samples/video/mp4/sample_640x360.mp4"
+               autoplay muted loop></video>
+
+        <div class="actions">
+            <div class="like-btn">❤️</div>
+            <div class="like-count">0</div>
+            <div>💬</div>
+            <div>➤</div>
+        </div>
+    </div>
+
+    <!-- REEL 2 -->
+    <div class="reel">
+        <video src="https://filesamples.com/samples/video/mp4/sample_960x400_ocean.mp4"
+               autoplay muted loop></video>
+
+        <div class="actions">
+            <div class="like-btn">❤️</div>
+            <div class="like-count">0</div>
+            <div>💬</div>
+            <div>➤</div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    document.querySelectorAll(".like-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            let count = btn.nextElementSibling;
+            count.innerText = Number(count.innerText) + 1;
+            btn.style.color = "red";
+        });
+    });
+</script>
+
+</body>
+</html>
